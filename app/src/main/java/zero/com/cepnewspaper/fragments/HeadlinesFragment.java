@@ -43,9 +43,9 @@ public class HeadlinesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_headlines, container, false);
+        View view = inflater.inflate(R.layout.fragment_headlines, container, false);
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
@@ -65,12 +65,16 @@ public class HeadlinesFragment extends Fragment {
     private void getHeadlines() {
 
         ApiService apiService = RetrofitHelper.getinstance().getApiService();
-        apiService.getHeadlines(ShareConstant.COUNTRY,ShareConstant.CATEGORY,ShareConstant.API_KEY)
+        apiService.getHeadlines(ShareConstant.COUNTRY, ShareConstant.CATEGORY, ShareConstant.API_KEY)
                 .enqueue(new Callback<NewsResponseVO>() {
                     @Override
                     public void onResponse(Call<NewsResponseVO> call, Response<NewsResponseVO> response) {
                         progressDialog.hide();
-                        headlinesAdapter.setNewData(response.body().getArticles());
+                        NewsResponseVO newsResponseVO = response.body();
+                        if (newsResponseVO != null && newsResponseVO.getArticles() != null && newsResponseVO.getArticles().size() > 0) {
+                            headlinesAdapter.setNewData(newsResponseVO.getArticles());
+                        }
+
                     }
 
                     @Override

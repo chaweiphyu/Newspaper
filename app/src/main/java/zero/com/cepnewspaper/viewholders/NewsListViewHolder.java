@@ -1,5 +1,6 @@
 package zero.com.cepnewspaper.viewholders;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,9 +12,10 @@ import com.bumptech.glide.request.RequestOptions;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import zero.com.cepnewspaper.R;
+import zero.com.cepnewspaper.activities.HomeDetailActivity;
 import zero.com.cepnewspaper.networks.vos.ArticlesResponseVO;
 
-public class NewsListViewHolder extends RecyclerView.ViewHolder {
+public class NewsListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ArticlesResponseVO articlesResponseVO;
 
@@ -33,6 +35,8 @@ public class NewsListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         ButterKnife.bind(this,itemView);
+
+        itemView.setOnClickListener(this);
     }
 
     public void bind(ArticlesResponseVO articlesResponseVO){
@@ -49,6 +53,21 @@ public class NewsListViewHolder extends RecyclerView.ViewHolder {
         newsTitle.setText(articlesResponseVO.getTitle());
 
         time.setText(articlesResponseVO.getPublishedAt());
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position = getAdapterPosition();
+        if (position != RecyclerView.NO_POSITION){
+            Intent intent = new Intent(itemView.getContext(), HomeDetailActivity.class);
+            intent.putExtra("title",articlesResponseVO.getTitle());
+            intent.putExtra("image",articlesResponseVO.getUrlToImage());
+            intent.putExtra("source",articlesResponseVO.getSource().getName());
+            intent.putExtra("time",articlesResponseVO.getPublishedAt());
+            intent.putExtra("description",articlesResponseVO.getDescription());
+            itemView.getContext().startActivity(intent);
+        }
 
     }
 }

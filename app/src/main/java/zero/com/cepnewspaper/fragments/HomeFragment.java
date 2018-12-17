@@ -74,7 +74,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<NewsResponseVO> call, Response<NewsResponseVO> response) {
                 progressDialog.hide();
-                newsAdapter.setNewData(response.body().getArticles());
+                NewsResponseVO newsResponseVO = response.body();
+                if (newsResponseVO != null && newsResponseVO.getArticles()!=null  && newsResponseVO.getArticles().size()>0) {
+                    newsAdapter.setNewData(newsResponseVO.getArticles());
+                }
+
             }
 
             @Override

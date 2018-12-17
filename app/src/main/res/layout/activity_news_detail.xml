@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"/>
+
+    <TextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:text="text"
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_small"
+        android:textSize="@dimen/text_source_size"
+        />
+
+    <ImageView
+        android:id="@+id/iv_news_photo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:src="@drawable/newspaper"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:textSize="@dimen/text_source_size"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_median"
+        android:text="text"
+        android:textSize="@dimen/text_desc_size"
+        android:textStyle="bold"/>
+
+</LinearLayout>

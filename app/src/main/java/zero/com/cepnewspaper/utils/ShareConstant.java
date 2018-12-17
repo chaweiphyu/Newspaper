@@ -8,7 +8,7 @@ public class ShareConstant {
     public static final String COUNTRY = "us";
     public static final String CATEGORY = "business";
     public static final String Q = "bitcoin";
-    public static final String FROM ="2018-11-13";
+    public static final String FROM ="2018-11-17";
     public static final String SORT_BY = "publishedAt";
 
 }
